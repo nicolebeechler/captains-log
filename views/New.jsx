@@ -16,6 +16,4 @@ function New (props) {
     )
 }
 
-// res.send('new')
-
 module.exports = New
