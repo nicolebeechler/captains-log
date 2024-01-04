@@ -30,7 +30,7 @@ app.get('/logs', async (req, res) => {
     try {
         const foundLogs = await Log.find({})
         res.render('logs/Index', {
-            log: foundLogs
+            logs: foundLogs
         })
     } catch (error) {
         res.status(400).send({ message: error.message })
