@@ -1,6 +1,9 @@
-const express = require('express')
+require('dotenv').config()
+const express = require('express') 
+const mongoose = require('mongoose')
 const jsxEngine = require('jsx-view-engine')
 const bodyParser = require('body-parser')
+const Log = require('./models/logs')
 const PORT = process.env.PORT || 3000
 
 const app = express()
@@ -8,6 +11,11 @@ const app = express()
 app.use(express.urlencoded({ extended: true })) 
 app.set('view engine', 'jsx')
 app.engine('jsx', jsxEngine())
+
+mongoose.connect(process.env.MONGO_URI)
+mongoose.connection.once('open', () => {
+    console.log('connected to mongodb')
+})
 
 app.get('/', function (req, res) {
     res.send(`
@@ -60,6 +68,17 @@ app.post('/logs', async (req, res) => {
 })
 
 // Show Route
+
+app.get('/logs/:id', async (req, res) => {
+    try {
+        const foundLog = await Log.findOne({_id: req.params.id})
+        res.render('logs/Show', {
+            log: foundLog
+        })
+    } catch (error) {
+        res.status(400).send({ message: error.message})
+    }
+})
 
 app.listen(PORT, () => {
   console.log(`${PORT} is working`)
