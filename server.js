@@ -20,22 +20,22 @@ mongoose.connection.once('open', () => {
 app.get('/', function (req, res) {
     res.send(`
     <h1>Captain's Log</h1>
-    <h2><a href="/logs">Create Log</a></h2>
+    <h2><a href="/logs/new">Create Log</a></h2>
     `)
 })
 
 // Index Route
 
-// app.get('/log', async (req, res) => {
-//     try {
-//         const foundLogs = await Log.find({})
-//         res.render('log/Index', {
-//             log: foundLogs
-//         })
-//     } catch (error) {
-//         res.status(400).send({ message: error.message })
-//     }
-// })
+app.get('/logs', async (req, res) => {
+    try {
+        const foundLogs = await Log.find({})
+        res.render('logs/Index', {
+            log: foundLogs
+        })
+    } catch (error) {
+        res.status(400).send({ message: error.message })
+    }
+})
 
 // New Route
 
@@ -43,8 +43,8 @@ app.get('/', function (req, res) {
 //     res.send('new')
 // })
 
-app.get('/logs', (req, res) => {
-    res.render('New')
+app.get('/logs/new', (req, res) => {
+    res.render('logs/New')
 })
 
 // Delete Route
