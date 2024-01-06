@@ -2,8 +2,10 @@
 
 An app that records message logs from the captain. 
 
-## Restful Routes
 
+| Restful Routes |  |  |  |  |  |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+|  |  |  |  |  |  |
 | # | Action | URL | HTTP Verb | jsx view filename | mongoose method |
 | 1 | Index | /logs/ | GET | Index.jsx | Log.find() |
 | 2 | Show | /logs/ | GET | Show.jsx | Log.findOne ot Log.findById |
