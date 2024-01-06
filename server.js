@@ -39,10 +39,6 @@ app.get('/logs', async (req, res) => {
 
 // New Route
 
-// app.get('/logs', (req, res) => {
-//     res.send('new')
-// })
-
 app.get('/logs/new', (req, res) => {
     res.render('logs/New')
 })
