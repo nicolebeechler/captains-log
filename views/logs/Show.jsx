@@ -10,6 +10,12 @@ function Show(props){
                 {props.log.entry} <br/>
                 Ship Status: {props.log.shipIsBroken ? 'Broken.' : 'Working.'} <br/>
             </p>
+            <form action={`/logs/${props.log._id}?_method=DELETE`} method="POST">
+                <input type="submit" value={`Delete this ${props.log.title}`}/>
+            </form>
+            <div>
+                <a href={`/logs/${props.log._id}/edit`}><button>{`Edit this ${props.log.title}`}</button></a>
+            </div>
         </div>
     )
 }
