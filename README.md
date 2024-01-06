@@ -4,6 +4,7 @@ An app that records message logs from the captain.
 
 ## Restful Routes
 
+|  |  |  |  |  |  |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | # | Action | URL | HTTP Verb | jsx view filename | mongoose method |
 | 1 | Index | /logs/ | GET | Index.jsx | Log.find() |
